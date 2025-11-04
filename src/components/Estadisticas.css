@@ -1,0 +1,261 @@
+/* Estilos para la página Estadísticas */
+
+.estadisticas-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Encabezado */
+.estadisticas-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.estadisticas-header h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.estadisticas-header p {
+  font-size: 1.1rem;
+  color: #aaa;
+}
+
+/* Estado vacío */
+.empty-stats {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #1a1a1a;
+  border: 2px dashed #2a2a2a;
+  border-radius: 12px;
+}
+
+.empty-stats .empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.empty-stats h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.empty-stats p {
+  color: #aaa;
+  font-size: 1rem;
+}
+
+/* Grid de estadísticas principales */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-box {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  border-color: #4a9eff;
+}
+
+.stat-box.highlight {
+  border-color: #4a9eff;
+  background: linear-gradient(135deg, #1a1a1a 0%, #1a2a3a 100%);
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-percentage {
+  font-size: 1.2rem;
+  color: #4a9eff;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.stat-detail {
+  font-size: 0.9rem;
+  color: #4a9eff;
+  margin-top: 0.5rem;
+}
+
+/* Secciones */
+.section {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+/* Estadísticas por género */
+.genre-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.genre-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.genre-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.genre-name {
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.genre-count {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.genre-bar {
+  width: 100%;
+  height: 12px;
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.genre-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a9eff 0%, #3a8eef 100%);
+  transition: width 0.5s ease;
+}
+
+/* Top juegos */
+.top-juegos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.top-juego-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: #0f0f0f;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.top-juego-item:hover {
+  transform: translateX(5px);
+  border-color: #4a9eff;
+}
+
+.top-juego-rank {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4a9eff;
+  min-width: 50px;
+  text-align: center;
+}
+
+.top-juego-info {
+  flex: 1;
+}
+
+.top-juego-info h3 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 0 0.3rem 0;
+}
+
+.top-juego-info p {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin: 0;
+}
+
+.top-juego-horas {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: right;
+}
+
+.top-juego-horas span {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-weight: 400;
+  display: block;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .estadisticas-container {
+    padding: 1rem;
+  }
+
+  .estadisticas-header h1 {
+    font-size: 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .stat-box {
+    padding: 1.5rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .top-juego-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .top-juego-rank {
+    min-width: auto;
+  }
+
+  .top-juego-info {
+    text-align: center;
+  }
+}

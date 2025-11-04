@@ -1,0 +1,72 @@
+/* Estilos para el componente ListaJuegos */
+
+.lista-juegos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Mensaje cuando no hay juegos */
+.mensaje-vacio {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--bg-secondary, #1a1a1a);
+  border-radius: 12px;
+  border: 2px dashed var(--border-color, #2a2a2a);
+}
+
+.mensaje-vacio p {
+  font-size: 1.25rem;
+  margin: 0.75rem 0;
+  color: var(--text-secondary, #aaa);
+}
+
+.mensaje-vacio .emoji {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.mensaje-vacio .subtitulo {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* Estado de carga */
+.lista-juegos.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Responsivo */
+@media (max-width: 1200px) {
+  .lista-juegos {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .lista-juegos {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 1rem;
+  }
+
+  .mensaje-vacio {
+    padding: 3rem 1.5rem;
+  }
+
+  .mensaje-vacio p {
+    font-size: 1.1rem;
+  }
+
+  .mensaje-vacio .emoji {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lista-juegos {
+    gap: 0.875rem;
+  }
+}

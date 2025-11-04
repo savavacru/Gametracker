@@ -1,0 +1,150 @@
+/* Estilos para el componente FormularioJuego */
+
+.form-juego {
+  background-color: var(--bg-secondary, #1a1a1a);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color, #2a2a2a);
+}
+
+.form-juego h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary, #fff);
+  font-weight: 600;
+}
+
+.form-juego label {
+  display: block;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary, #aaa);
+  font-size: 0.9rem;
+}
+
+.form-juego input,
+.form-juego select,
+.form-juego textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 2px solid var(--border-color, #2a2a2a);
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  background-color: var(--bg-primary, #151515);
+  color: var(--text-primary, #fff);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.form-juego input:focus,
+.form-juego select:focus,
+.form-juego textarea:focus {
+  outline: none;
+  border-color: var(--accent-blue, #4a9eff);
+}
+
+.form-juego input::placeholder,
+.form-juego textarea::placeholder {
+  color: #666;
+}
+
+.form-juego select {
+  cursor: pointer;
+}
+
+.form-juego select option {
+  background-color: var(--bg-secondary, #1a1a1a);
+  color: var(--text-primary, #fff);
+}
+
+.form-juego textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+/* Preview de imagen */
+.preview-imagen {
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  max-height: 200px;
+  border: 1px solid var(--border-color, #2a2a2a);
+}
+
+.preview-imagen img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Botones del formulario */
+.form-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.form-buttons button {
+  flex: 1;
+  padding: 0.875rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.form-buttons .btn-primary {
+  background-color: var(--accent-blue, #4a9eff);
+  color: white;
+}
+
+.form-buttons .btn-primary:hover {
+  background-color: var(--accent-blue-hover, #3a8eef);
+  transform: translateY(-2px);
+}
+
+.form-buttons .btn-secondary {
+  background-color: var(--bg-tertiary, #2a2a2a);
+  color: var(--text-primary, #fff);
+  border: 1px solid var(--border-color, #3a3a3a);
+}
+
+.form-buttons .btn-secondary:hover {
+  background-color: #3a3a3a;
+}
+
+/* Estados de checkbox/radio */
+.form-juego input[type="checkbox"],
+.form-juego input[type="radio"] {
+  width: auto;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .form-juego {
+    padding: 1rem;
+  }
+
+  .form-juego h2 {
+    font-size: 1.1rem;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .form-buttons button {
+    width: 100%;
+  }
+}
