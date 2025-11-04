@@ -59,7 +59,7 @@ function Catalogo() {
     <div className="catalogo-container">
       {/* Encabezado */}
       <div className="catalogo-header">
-        <h1>📚 Catálogo de Juegos</h1>
+        <h1>Catálogo de Juegos</h1>
         <p>Explora todos los juegos disponibles</p>
       </div>
 
@@ -102,19 +102,19 @@ function Catalogo() {
                   {/* Información del juego */}
                   <div className="juego-info">
                     <h3>{juego.titulo}</h3>
-                    <p className="juego-genero">🎮 {juego.genero}</p>
-                    <p className="juego-horas">⏱️ {juego.horasJugadas} horas</p>
+                    <p className="juego-genero"> {juego.genero}</p>
+                    <p className="juego-horas"> {juego.horasJugadas} horas</p>
                     
                     {/* Estado del juego */}
                     <span className={`juego-estado ${juego.estado ? 'completado' : 'pendiente'}`}>
-                      {juego.estado ? '✅ Completado' : '⏳ Pendiente'}
+                      {juego.estado ? 'Completado' : 'Pendiente'}
                     </span>
                   </div>
                 </div>
               ))
             ) : (
               <div className="no-results">
-                <p>😕 No se encontraron juegos</p>
+                <p>No se encontraron juegos</p>
               </div>
             )}
           </div>

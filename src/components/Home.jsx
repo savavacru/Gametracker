@@ -26,7 +26,7 @@ function Home() {
           
           {/* Feature 1: Catálogo */}
           <div className="feature-card">
-            <div className="feature-icon">📚</div>
+            <div className="feature-icon"></div>
             <h3>Explora el Catálogo</h3>
             <p>
               Descubre miles de juegos con información detallada, 
@@ -36,7 +36,6 @@ function Home() {
 
           {/* Feature 2: Dashboard */}
           <div className="feature-card">
-            <div className="feature-icon">📊</div>
             <h3>Tu Dashboard Personal</h3>
             <p>
               Administra tu colección, añade juegos a tu biblioteca 
@@ -46,7 +45,6 @@ function Home() {
 
           {/* Feature 3: Estadísticas */}
           <div className="feature-card">
-            <div className="feature-icon">📈</div>
             <h3>Estadísticas Detalladas</h3>
             <p>
               Visualiza tus hábitos de juego, géneros favoritos 
@@ -56,7 +54,6 @@ function Home() {
 
           {/* Feature 4: Seguimiento */}
           <div className="feature-card">
-            <div className="feature-icon">✅</div>
             <h3>Seguimiento de Progreso</h3>
             <p>
               Marca juegos como jugando, completados o pendientes. 
