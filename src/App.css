@@ -1,19 +1,65 @@
-/* Variables CSS para colores y estilos consistentes */
+/* ==================== VARIABLES GLOBALES ==================== */
+/* Paleta de colores centralizada para toda la aplicación */
 :root {
+  /* Colores de fondo */
   --bg-primary: #151515;
   --bg-secondary: #1a1a1a;
   --bg-tertiary: #2a2a2a;
+  --bg-quaternary: #3a3a3a;
+  
+  /* Colores de texto */
   --text-primary: #ffffff;
   --text-secondary: #aaaaaa;
+  --text-tertiary: #666666;
+  --text-muted: #999999;
+  
+  /* Colores de acento */
   --accent-blue: #4a9eff;
   --accent-blue-hover: #3a8eef;
+  --accent-blue-light: rgba(74, 158, 255, 0.15);
   --accent-green: #4ade80;
+  --accent-green-light: rgba(74, 222, 128, 0.15);
   --accent-yellow: #fbbf24;
+  --accent-yellow-light: rgba(251, 191, 36, 0.15);
   --accent-red: #ff4a4a;
+  --accent-red-light: rgba(255, 74, 74, 0.15);
+  --accent-purple: #a78bfa;
+  --accent-purple-light: rgba(167, 139, 250, 0.15);
+  
+  /* Colores de borde */
   --border-color: #2a2a2a;
+  --border-hover: #4a9eff;
+  
+  /* Sombras */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  
+  /* Bordes redondeados */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  
+  /* Espaciado */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Transiciones */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Fuente */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* Reset y estilos base */
+/* ==================== RESET Y ESTILOS BASE ==================== */
 * {
   margin: 0;
   padding: 0;
@@ -22,13 +68,16 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 /* Estilos para scrollbar personalizado */
@@ -42,11 +91,11 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--bg-tertiary);
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a3a3a;
+  background: var(--bg-quaternary);
 }
 
 /* ==================== LAYOUT PRINCIPAL ==================== */
@@ -356,165 +405,12 @@ body {
   background-color: #5a6268;
 }
 
-/* ==================== BUSCADOR DE JUEGOS ==================== */
-.buscador-juegos {
-  background-color: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.buscador-juegos h3 {
-  font-size: 18px;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.form-busqueda {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.input-busqueda {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.input-busqueda:focus {
-  outline: none;
-  border-color: #667eea;
-}
-
-.btn-buscar {
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.btn-buscar:hover:not(:disabled) {
-  transform: translateY(-2px);
-}
-
-.btn-buscar:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.resultados-busqueda {
-  max-height: 500px;
-  overflow-y: auto;
-  margin-top: 15px;
-}
-
-.mensaje-cargando,
-.mensaje-vacio {
-  text-align: center;
-  padding: 20px;
-  color: #666;
-}
-
-.resultado-count {
-  font-size: 12px;
-  color: #999;
-  margin-bottom: 10px;
-}
-
-.lista-resultados {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.resultado-item {
-  display: flex;
-  gap: 12px;
-  padding: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.resultado-item:hover {
-  border-color: #667eea;
-  background-color: #f8f9ff;
-  transform: translateX(5px);
-}
-
-.resultado-imagen {
-  width: 80px;
-  height: 80px;
-  flex-shrink: 0;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.resultado-imagen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.sin-imagen {
-  width: 100%;
-  height: 100%;
-  background-color: #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  color: #999;
-}
-
-.resultado-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.resultado-info h4 {
-  margin: 0 0 5px 0;
-  font-size: 14px;
-  color: #222;
-  font-weight: 600;
-}
-
-.resultado-generos {
-  font-size: 11px;
-  color: #667eea;
-  margin: 3px 0;
-}
-
-.resultado-detalles {
-  display: flex;
-  gap: 12px;
-  margin: 5px 0;
-  font-size: 11px;
-  color: #666;
-}
-
-.resultado-plataformas {
-  font-size: 10px;
-  color: #999;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Utilidades comunes */
+/* ==================== UTILIDADES COMUNES ==================== */
 .loading {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-size: 24px;
+  font-size: 1.5rem;
   color: var(--accent-blue);
 }

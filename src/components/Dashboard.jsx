@@ -24,7 +24,7 @@ function Dashboard({
     <div className="dashboard-container">
       {/* Encabezado del Dashboard */}
       <div className="dashboard-header">
-        <h1>📊 Mi Dashboard</h1>
+        <h1>Mi Dashboard</h1>
         <p>Bienvenido, <strong>{usuario.nombre}</strong></p>
       </div>
 
@@ -39,7 +39,7 @@ function Dashboard({
         </div>
 
         <div className="stat-card">
-          <div className="stat-icon">✅</div>
+          <div className="stat-icon"></div>
           <div className="stat-info">
             <h3>{juegos.filter(j => j.estado).length}</h3>
             <p>Juegos completados</p>
@@ -47,7 +47,7 @@ function Dashboard({
         </div>
 
         <div className="stat-card">
-          <div className="stat-icon">⏱️</div>
+          <div className="stat-icon">⏱</div>
           <div className="stat-info">
             <h3>{juegos.reduce((total, j) => total + (j.horasJugadas || 0), 0)}</h3>
             <p>Horas totales jugadas</p>
@@ -55,7 +55,7 @@ function Dashboard({
         </div>
 
         <div className="stat-card">
-          <div className="stat-icon">⏳</div>
+          <div className="stat-icon"></div>
           <div className="stat-info">
             <h3>{juegos.filter(j => !j.estado).length}</h3>
             <p>Juegos pendientes</p>
@@ -82,7 +82,7 @@ function Dashboard({
         {/* Contenido principal: Lista de juegos */}
         <div className="dashboard-main">
           <div className="juegos-header">
-            <h2>📚 Mi Biblioteca</h2>
+            <h2>Mi Biblioteca</h2>
             <span className="juegos-count">
               {juegos.length} {juegos.length === 1 ? 'juego' : 'juegos'}
             </span>
@@ -96,7 +96,7 @@ function Dashboard({
             />
           ) : (
             <div className="empty-state">
-              <div className="empty-icon">🎮</div>
+              <div className="empty-icon"></div>
               <h3>Tu biblioteca está vacía</h3>
               <p>Comienza agregando tu primer juego usando el buscador o el formulario</p>
             </div>

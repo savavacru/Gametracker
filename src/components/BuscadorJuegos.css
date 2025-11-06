@@ -1,0 +1,250 @@
+/* Estilos para el componente BuscadorJuegos */
+
+.buscador-juegos {
+  background-color: var(--bg-secondary, #1a1a1a);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color, #2a2a2a);
+}
+
+.buscador-juegos h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary, #fff);
+  font-weight: 600;
+}
+
+/* Formulario de búsqueda */
+.form-busqueda {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.input-busqueda {
+  flex: 1;
+  padding: 0.75rem;
+  background-color: var(--bg-primary, #151515);
+  border: 2px solid var(--border-color, #2a2a2a);
+  border-radius: 8px;
+  color: var(--text-primary, #fff);
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.input-busqueda:focus {
+  outline: none;
+  border-color: var(--accent-blue, #4a9eff);
+}
+
+.input-busqueda::placeholder {
+  color: #666;
+}
+
+/* Botón de búsqueda */
+.btn-buscar {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent-blue, #4a9eff);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+  white-space: nowrap;
+}
+
+.btn-buscar:hover:not(:disabled) {
+  background-color: var(--accent-blue-hover, #3a8eef);
+  transform: translateY(-2px);
+}
+
+.btn-buscar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Resultados de búsqueda */
+.resultados-busqueda {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+
+/* Scrollbar personalizado para resultados */
+.resultados-busqueda::-webkit-scrollbar {
+  width: 6px;
+}
+
+.resultados-busqueda::-webkit-scrollbar-track {
+  background: var(--bg-primary, #151515);
+  border-radius: 3px;
+}
+
+.resultados-busqueda::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary, #2a2a2a);
+  border-radius: 3px;
+}
+
+.resultados-busqueda::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+/* Mensajes de estado */
+.mensaje-cargando,
+.mensaje-vacio {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary, #aaa);
+  font-size: 0.95rem;
+}
+
+.resultado-count {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #aaa);
+  margin-bottom: 0.75rem;
+  padding-left: 0.25rem;
+}
+
+/* Lista de resultados */
+.lista-resultados {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Item de resultado */
+.resultado-item {
+  display: flex;
+  gap: 1rem;
+  padding: 0.875rem;
+  background-color: var(--bg-primary, #151515);
+  border: 1px solid var(--border-color, #2a2a2a);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.resultado-item:hover {
+  border-color: var(--accent-blue, #4a9eff);
+  background-color: rgba(74, 158, 255, 0.05);
+  transform: translateX(5px);
+}
+
+/* Imagen del resultado */
+.resultado-imagen {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--bg-tertiary, #2a2a2a);
+}
+
+.resultado-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sin-imagen {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-tertiary, #2a2a2a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* Información del resultado */
+.resultado-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.resultado-info h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-primary, #fff);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resultado-generos {
+  font-size: 0.8rem;
+  color: var(--accent-blue, #4a9eff);
+  margin: 0;
+}
+
+/* Detalles del resultado */
+.resultado-detalles {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary, #aaa);
+}
+
+.resultado-detalles .rating {
+  color: var(--accent-yellow, #fbbf24);
+  font-weight: 500;
+}
+
+.resultado-detalles .fecha {
+  color: var(--text-secondary, #aaa);
+}
+
+.resultado-plataformas {
+  font-size: 0.75rem;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .buscador-juegos {
+    padding: 1rem;
+  }
+
+  .form-busqueda {
+    flex-direction: column;
+  }
+
+  .btn-buscar {
+    width: 100%;
+  }
+
+  .resultado-item {
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .resultado-imagen {
+    width: 60px;
+    height: 60px;
+  }
+
+  .resultado-info h4 {
+    font-size: 0.9rem;
+  }
+
+  .resultado-detalles {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}

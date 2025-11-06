@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { buscarJuegosRAWG } from "../services/juegoService";
+import './BuscadorJuegos.css';
 
 function BuscadorJuegos({ onSeleccionarJuego }) {
   const [busqueda, setBusqueda] = useState("");

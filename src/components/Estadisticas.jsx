@@ -51,14 +51,14 @@ function Estadisticas({ juegos, usuario }) {
     <div className="estadisticas-container">
       {/* Encabezado */}
       <div className="estadisticas-header">
-        <h1>📈 Estadísticas de Juego</h1>
+        <h1>Estadísticas de Juego</h1>
         {usuario && <p>Análisis de tu biblioteca, {usuario.nombre}</p>}
       </div>
 
       {totalJuegos === 0 ? (
         /* Mostrar mensaje si no hay juegos */
         <div className="empty-stats">
-          <div className="empty-icon">📊</div>
+          <div className="empty-icon"></div>
           <h3>No hay estadísticas disponibles</h3>
           <p>Agrega juegos a tu biblioteca para ver tus estadísticas</p>
         </div>
@@ -108,7 +108,7 @@ function Estadisticas({ juegos, usuario }) {
 
           {/* Distribución por género */}
           <div className="section">
-            <h2>📊 Distribución por Género</h2>
+            <h2>Distribución por Género</h2>
             <div className="genre-stats">
               {Object.entries(juegosPorGenero).map(([genero, cantidad]) => {
                 const horas = horasPorGenero[genero] || 0;
