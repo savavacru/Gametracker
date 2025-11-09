@@ -27,9 +27,15 @@ function DetalleJuegoOverlay({ juego, usuario, onCerrar, onGuardar }) {
 
   // Manejar guardado
   const handleGuardar = () => {
+    // Enviar todos los datos del juego igual que en el Dashboard
     const datosJuego = {
       titulo: juego.titulo,
+      descripcion: juego.descripcion || '',
+      imagen: juego.imagen || '',
       genero: genero || generoSugerido || 'Sin categoría',
+      plataforma: plataformasArray.length > 0 ? plataformasArray.join(', ') : '',
+      rating: Number(juego.rating) || 0,
+      fechaLanzamiento: juego.fechaLanzamiento || '',
       horasJugadas: Number(horasJugadas),
       estado: estado
     };
