@@ -5,11 +5,6 @@ import './JuegoCatalogoCard.css';
  * Tarjeta individual para mostrar un juego del catálogo
  */
 function JuegoCatalogoCard({ juego, onClick }) {
-  // Extraer año de la fecha de lanzamiento
-  const añoLanzamiento = juego.fechaLanzamiento 
-    ? new Date(juego.fechaLanzamiento).getFullYear() 
-    : 'N/A';
-
   return (
     <div className="juego-catalogo-card" onClick={onClick}>
       {/* Imagen del juego */}
