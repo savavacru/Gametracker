@@ -6,8 +6,11 @@ const API_URL = `${process.env.REACT_APP_API_URL || "http://localhost:5000/api"}
  */
 export const obtenerJuegos = async () => {
     try {
-        const respuesta = await fetch(API_URL, {
+        // Agregar timestamp para evitar caché
+        const url = `${API_URL}?_t=${Date.now()}`;
+        const respuesta = await fetch(url, {
             credentials: "include", // Importante: incluir cookies
+            cache: 'no-cache', // Evitar caché del navegador
         });
         
         if (!respuesta.ok) {
@@ -122,6 +125,26 @@ export const buscarJuegosRAWG = async (nombre) => {
         return await respuesta.json();
     } catch (error) {
         console.error("Error al buscar juegos en RAWG:", error);
+        return [];
+    }
+};
+
+/**
+ * Obtener juegos del catálogo por género/categoría desde RAWG
+ * @param {string} categoria - Categoría o género (populares, accion, aventura, estrategia)
+ * @returns {Array} - Array de juegos
+ */
+export const obtenerJuegosPorCategoria = async (categoria) => {
+    try {
+        const respuesta = await fetch(`${API_URL}/catalogo/${categoria}`);
+        
+        if (!respuesta.ok) {
+            throw new Error(`Error al obtener juegos de ${categoria}`);
+        }
+        
+        return await respuesta.json();
+    } catch (error) {
+        console.error(`Error al obtener juegos de ${categoria}:`, error);
         return [];
     }
 };

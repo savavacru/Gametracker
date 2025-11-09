@@ -32,9 +32,14 @@ function App() {
   // Cargar juegos cuando el usuario esté autenticado
   useEffect(() => {
     if (usuario) {
+      // Limpiar juegos primero para evitar mostrar datos del usuario anterior
+      setJuegos([]);
       cargarJuegos();
+    } else {
+      // Limpiar juegos si no hay usuario
+      setJuegos([]);
     }
-  }, [usuario]);
+  }, [usuario]); // Se ejecuta cada vez que cambia el usuario
 
   const verificarAuth = async () => {
     const usuarioAutenticado = await verificarAutenticacion();
@@ -48,6 +53,7 @@ function App() {
       setJuegos(datos);
     } catch (error) {
       console.error("Error al cargar juegos:", error);
+      setJuegos([]); // En caso de error, asegurar que esté vacío
     }
   };
 
@@ -91,11 +97,19 @@ function App() {
   };
 
   const manejarLoginExitoso = (datosUsuario) => {
+    // Limpiar datos del usuario anterior antes de cargar el nuevo
+    setJuegos([]);
+    setJuegoAEditar(null);
     setUsuario(datosUsuario);
+    setPaginaActual('dashboard'); // Ir al dashboard después del login
   };
 
   const manejarRegistroExitoso = (datosUsuario) => {
+    // Limpiar datos del usuario anterior antes de cargar el nuevo
+    setJuegos([]);
+    setJuegoAEditar(null);
     setUsuario(datosUsuario);
+    setPaginaActual('dashboard'); // Ir al dashboard después del registro
   };
 
   const manejarLogout = async () => {
@@ -128,7 +142,13 @@ function App() {
         return <Home />;
       
       case 'catalogo':
-        return <Catalogo />;
+        return (
+          <Catalogo 
+            usuario={usuario}
+            onAgregarJuego={agregarJuego}
+            onCambiarVista={setPaginaActual}
+          />
+        );
       
       case 'dashboard':
         // Dashboard solo accesible si hay usuario

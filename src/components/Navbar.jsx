@@ -64,15 +64,16 @@ function Navbar({ usuario, paginaActual, onCambiarPagina, onLogout }) {
             </button>
           </li>
         )}
-        
-        <li>
-          <button 
-            className={paginaActual === 'estadisticas' ? 'active' : ''}
-            onClick={() => handleCambiarPagina('estadisticas')}
-          >
-            Estadísticas
-          </button>
-        </li>
+        {usuario &&(
+          <li>
+            <button 
+              className={paginaActual === 'estadisticas' ? 'active' : ''}
+              onClick={() => handleCambiarPagina('estadisticas')}
+            >
+              Estadísticas
+            </button>
+          </li>
+        )}
       </ul>
 
       {/* Sección de usuario: muestra login o logout según el estado */}

@@ -1,124 +1,149 @@
 import React, { useState, useEffect } from 'react';
+import CarruselJuegos from './CarruselJuegos';
+import BuscadorJuegos from './BuscadorJuegos';
+import DetalleJuegoOverlay from './DetalleJuegoOverlay';
+import { obtenerJuegosPorCategoria } from '../services/juegoService';
 import './Catalogo.css';
 
 /**
  * Página de Catálogo
- * Muestra todos los juegos disponibles (globales, no por usuario)
- * Integra la API de RAWG para mostrar portadas
+ * Muestra juegos organizados en carruseles por categoría
+ * Usa la API de RAWG para obtener datos de juegos populares
  */
-function Catalogo() {
-  // Estado para almacenar los juegos del catálogo
-  const [juegos, setJuegos] = useState([]);
-  // Estado para controlar si está cargando
-  const [cargando, setCargando] = useState(true);
-  // Estado para el término de búsqueda
-  const [busqueda, setBusqueda] = useState('');
+function Catalogo({ usuario, onAgregarJuego, onCambiarVista }) {
+  // Estados para cada categoría de juegos
+  const [juegosPopulares, setJuegosPopulares] = useState([]);
+  const [juegosAccion, setJuegosAccion] = useState([]);
+  const [juegosAventura, setJuegosAventura] = useState([]);
+  const [juegosEstrategia, setJuegosEstrategia] = useState([]);
+  
+  // Estados de carga
+  const [cargandoPopulares, setCargandoPopulares] = useState(true);
+  const [cargandoAccion, setCargandoAccion] = useState(true);
+  const [cargandoAventura, setCargandoAventura] = useState(true);
+  const [cargandoEstrategia, setCargandoEstrategia] = useState(true);
 
-  // Cargar juegos al montar el componente
+  // Estado para el overlay de detalles
+  const [juegoSeleccionado, setJuegoSeleccionado] = useState(null);
+
+  // Cargar todas las categorías al montar el componente
   useEffect(() => {
-    cargarJuegos();
+    cargarCategorias();
   }, []);
 
-  /**
-   * Función para obtener juegos del backend
-   * Por ahora es global, no filtra por usuario
-   */
-  const cargarJuegos = async () => {
+  const cargarCategorias = async () => {
+    // Cargar juegos populares
     try {
-      setCargando(true);
-      const respuesta = await fetch('http://localhost:5000/api/juegos');
-      const datos = await respuesta.json();
-      // Asegurarse de que datos sea un array
-      setJuegos(Array.isArray(datos) ? datos : []);
+      const populares = await obtenerJuegosPorCategoria('populares');
+      setJuegosPopulares(populares);
     } catch (error) {
-      console.error('Error al cargar juegos:', error);
-      setJuegos([]); // En caso de error, establecer array vacío
+      console.error('Error al cargar juegos populares:', error);
     } finally {
-      setCargando(false);
+      setCargandoPopulares(false);
+    }
+
+    // Cargar juegos de acción
+    try {
+      const accion = await obtenerJuegosPorCategoria('accion');
+      setJuegosAccion(accion);
+    } catch (error) {
+      console.error('Error al cargar juegos de acción:', error);
+    } finally {
+      setCargandoAccion(false);
+    }
+
+    // Cargar juegos de aventura
+    try {
+      const aventura = await obtenerJuegosPorCategoria('aventura');
+      setJuegosAventura(aventura);
+    } catch (error) {
+      console.error('Error al cargar juegos de aventura:', error);
+    } finally {
+      setCargandoAventura(false);
+    }
+
+    // Cargar juegos de estrategia
+    try {
+      const estrategia = await obtenerJuegosPorCategoria('estrategia');
+      setJuegosEstrategia(estrategia);
+    } catch (error) {
+      console.error('Error al cargar juegos de estrategia:', error);
+    } finally {
+      setCargandoEstrategia(false);
     }
   };
 
-  /**
-   * Filtrar juegos según el término de búsqueda
-   */
-  const juegosFiltrados = juegos.filter(juego =>
-    juego.titulo.toLowerCase().includes(busqueda.toLowerCase()) ||
-    juego.genero.toLowerCase().includes(busqueda.toLowerCase())
-  );
+  const handleJuegoClick = (juego) => {
+    setJuegoSeleccionado(juego);
+  };
 
-  /**
-   * Obtener URL de portada desde RAWG
-   * Por ahora usamos un placeholder, pero puedes integrar la API de RAWG aquí
-   */
-  const obtenerPortada = (titulo) => {
-    // Placeholder - en el futuro integrarás RAWG API aquí
-    return `https://via.placeholder.com/300x200/2a2a2a/4a9eff?text=${encodeURIComponent(titulo)}`;
+  const handleCerrarOverlay = () => {
+    setJuegoSeleccionado(null);
+  };
+
+  const handleGuardarJuego = async (datosJuego) => {
+    if (!usuario) {
+      alert('Debes iniciar sesión para guardar juegos en tu biblioteca');
+      onCambiarVista('login');
+      return;
+    }
+
+    try {
+      await onAgregarJuego(datosJuego);
+      alert('¡Juego agregado a tu biblioteca!');
+      handleCerrarOverlay();
+    } catch (error) {
+      console.error('Error al guardar juego:', error);
+      alert('Error al guardar el juego. Inténtalo de nuevo.');
+    }
   };
 
   return (
     <div className="catalogo-container">
-      {/* Encabezado */}
       <div className="catalogo-header">
         <h1>Catálogo de Juegos</h1>
-        <p>Explora todos los juegos disponibles</p>
+        <p>Descubre los mejores juegos organizados por categorías</p>
       </div>
 
-      {/* Barra de búsqueda */}
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="🔍 Buscar por título o género..."
-          value={busqueda}
-          onChange={(e) => setBusqueda(e.target.value)}
+      <BuscadorJuegos onSeleccionarJuego={handleJuegoClick} />
+
+      <div className="catalogo-carruseles">
+        <CarruselJuegos 
+          titulo="Juegos Populares" 
+          juegos={juegosPopulares} 
+          cargando={cargandoPopulares}
+          onJuegoClick={handleJuegoClick}
+        />
+
+        <CarruselJuegos 
+          titulo="Acción" 
+          juegos={juegosAccion} 
+          cargando={cargandoAccion}
+          onJuegoClick={handleJuegoClick}
+        />
+
+        <CarruselJuegos 
+          titulo="Aventura" 
+          juegos={juegosAventura} 
+          cargando={cargandoAventura}
+          onJuegoClick={handleJuegoClick}
+        />
+
+        <CarruselJuegos 
+          titulo="Estrategia" 
+          juegos={juegosEstrategia} 
+          cargando={cargandoEstrategia}
+          onJuegoClick={handleJuegoClick}
         />
       </div>
 
-      {/* Mostrar loader mientras carga */}
-      {cargando ? (
-        <div className="loading">
-          <div className="spinner"></div>
-          <p>Cargando juegos...</p>
-        </div>
-      ) : (
-        <>
-          {/* Contador de juegos */}
-          <div className="juegos-count">
-            {juegosFiltrados.length} {juegosFiltrados.length === 1 ? 'juego encontrado' : 'juegos encontrados'}
-          </div>
-
-          {/* Grid de juegos */}
-          <div className="juegos-grid">
-            {juegosFiltrados.length > 0 ? (
-              juegosFiltrados.map((juego) => (
-                <div key={juego._id} className="juego-card">
-                  {/* Portada del juego */}
-                  <div className="juego-imagen">
-                    <img 
-                      src={obtenerPortada(juego.titulo)} 
-                      alt={juego.titulo}
-                    />
-                  </div>
-
-                  {/* Información del juego */}
-                  <div className="juego-info">
-                    <h3>{juego.titulo}</h3>
-                    <p className="juego-genero"> {juego.genero}</p>
-                    <p className="juego-horas"> {juego.horasJugadas} horas</p>
-                    
-                    {/* Estado del juego */}
-                    <span className={`juego-estado ${juego.estado ? 'completado' : 'pendiente'}`}>
-                      {juego.estado ? 'Completado' : 'Pendiente'}
-                    </span>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="no-results">
-                <p>No se encontraron juegos</p>
-              </div>
-            )}
-          </div>
-        </>
+      {juegoSeleccionado && (
+        <DetalleJuegoOverlay
+          juego={juegoSeleccionado}
+          usuario={usuario}
+          onCerrar={handleCerrarOverlay}
+          onGuardar={handleGuardarJuego}
+        />
       )}
     </div>
   );

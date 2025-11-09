@@ -1,261 +1,458 @@
-/* Estilos para la página Estadísticas */
-
+/* Contenedor principal */
 .estadisticas-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-/* Encabezado */
+/* Header mejorado */
 .estadisticas-header {
-  text-align: center;
   margin-bottom: 3rem;
 }
 
-.estadisticas-header h1 {
+.header-content h1 {
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
-.estadisticas-header p {
+.header-subtitle {
   font-size: 1.1rem;
-  color: #aaa;
+  color: var(--text-secondary);
 }
 
-/* Estado vacío */
+/* Empty state */
 .empty-stats {
   text-align: center;
   padding: 4rem 2rem;
-  background-color: #1a1a1a;
-  border: 2px dashed #2a2a2a;
-  border-radius: 12px;
 }
 
-.empty-stats .empty-icon {
+.empty-icon {
   font-size: 4rem;
   margin-bottom: 1rem;
 }
 
 .empty-stats h3 {
-  font-size: 1.5rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .empty-stats p {
-  color: #aaa;
-  font-size: 1rem;
+  color: var(--text-secondary);
 }
 
-/* Grid de estadísticas principales */
-.stats-grid {
+/* Stats content */
+.stats-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Grid de tarjetas */
+.stats-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 3rem;
 }
 
-.stat-box {
-  background-color: #1a1a1a;
-  border: 1px solid #2a2a2a;
+.stat-card {
+  background: var(--bg-secondary);
   border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
 }
 
-.stat-box:hover {
-  transform: translateY(-5px);
-  border-color: #4a9eff;
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.stat-box.highlight {
-  border-color: #4a9eff;
-  background: linear-gradient(135deg, #1a1a1a 0%, #1a2a3a 100%);
+.stat-card.primary { border-color: var(--accent-blue); }
+.stat-card.accent { border-color: #9b59b6; }
+.stat-card.success { border-color: #28a745; }
+.stat-card.warning { border-color: #ffc107; }
+
+.stat-icon {
+  font-size: 2.5rem;
+}
+
+.stat-info {
+  flex: 1;
 }
 
 .stat-value {
-  font-size: 2.5rem;
-  color: #fff;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 0.3rem;
 }
 
 .stat-label {
-  font-size: 0.95rem;
-  color: #aaa;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.stat-percentage {
-  font-size: 1.2rem;
-  color: #4a9eff;
-  margin-top: 0.5rem;
-  font-weight: 600;
-}
-
-.stat-detail {
   font-size: 0.9rem;
-  color: #4a9eff;
-  margin-top: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.stat-extra {
+  font-size: 0.8rem;
+  color: var(--accent-blue);
+  margin-top: 0.2rem;
+}
+
+/* Dos columnas */
+.stats-two-column {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 /* Secciones */
-.section {
-  background-color: #1a1a1a;
-  border: 1px solid #2a2a2a;
+.stat-section {
+  background: var(--bg-secondary);
   border-radius: 12px;
   padding: 2rem;
-  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
 }
 
-.section h2 {
-  font-size: 1.5rem;
-  color: #fff;
-  margin-bottom: 1.5rem;
+.stat-section.featured {
+  border-color: var(--accent-blue);
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.1) 0%, rgba(74, 158, 255, 0.05) 100%);
 }
 
-/* Estadísticas por género */
-.genre-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.genre-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.genre-header {
+.section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
 }
 
-.genre-name {
-  font-size: 1.1rem;
-  color: #fff;
-  font-weight: 500;
+.section-header h2 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
 }
 
-.genre-count {
-  font-size: 0.9rem;
-  color: #aaa;
+.section-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
-.genre-bar {
+/* Featured genre */
+.featured-content {
+  text-align: center;
+}
+
+.featured-genre {
+  padding: 1rem;
+}
+
+.featured-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.featured-genre h3 {
+  font-size: 1.8rem;
+  color: var(--accent-blue);
+  margin-bottom: 1.5rem;
+}
+
+.featured-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.featured-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featured-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.featured-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.3rem;
+}
+
+/* Progress circle */
+.progress-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.progress-circle-wrapper {
+  width: 150px;
+  height: 150px;
+}
+
+.progress-circle {
   width: 100%;
-  height: 12px;
-  background-color: #2a2a2a;
-  border-radius: 6px;
-  overflow: hidden;
+  height: 100%;
+  transform: rotate(-90deg);
 }
 
-.genre-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #4a9eff 0%, #3a8eef 100%);
-  transition: width 0.5s ease;
+.progress-circle-bg {
+  fill: none;
+  stroke: var(--border-color);
+  stroke-width: 8;
+}
+
+.progress-circle-fill {
+  fill: none;
+  stroke: var(--accent-blue);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease;
+}
+
+.progress-text {
+  transform: rotate(90deg);
+  font-size: 1.5rem;
+  font-weight: 700;
+  fill: var(--text-primary);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.progress-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.progress-bullet {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.progress-bullet.completed {
+  background: #28a745;
+}
+
+.progress-bullet.pending {
+  background: #ffc107;
 }
 
 /* Top juegos */
-.top-juegos {
+.top-juegos-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.top-juego-item {
+.top-juego-card {
+  display: grid;
+  grid-template-columns: 50px 1fr 2fr 80px;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-primary);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.top-juego-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateX(5px);
+}
+
+.juego-rank {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  background-color: #0f0f0f;
-  border: 1px solid #2a2a2a;
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.top-juego-item:hover {
-  transform: translateX(5px);
-  border-color: #4a9eff;
-}
-
-.top-juego-rank {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #4a9eff;
-  min-width: 50px;
-  text-align: center;
-}
-
-.top-juego-info {
-  flex: 1;
-}
-
-.top-juego-info h3 {
+  justify-content: center;
   font-size: 1.2rem;
-  color: #fff;
-  margin: 0 0 0.3rem 0;
-}
-
-.top-juego-info p {
-  font-size: 0.9rem;
-  color: #aaa;
-  margin: 0;
-}
-
-.top-juego-horas {
-  font-size: 1.8rem;
   font-weight: 700;
-  color: #fff;
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.juego-rank.rank-1 {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #000;
+}
+
+.juego-rank.rank-2 {
+  background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+  color: #000;
+}
+
+.juego-rank.rank-3 {
+  background: linear-gradient(135deg, #cd7f32, #e6ac7a);
+  color: #000;
+}
+
+.juego-details h4 {
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+  font-size: 1.1rem;
+}
+
+.juego-genre {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.juego-hours-bar {
+  background: var(--border-color);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.hours-bar-fill {
+  height: 100%;
+  background: var(--accent-blue);
+  transition: width 0.5s ease;
+}
+
+.juego-hours {
   text-align: right;
 }
 
-.top-juego-horas span {
-  font-size: 0.9rem;
-  color: #aaa;
-  font-weight: 400;
+.hours-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-blue);
   display: block;
 }
 
-/* Responsivo */
+.hours-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Genres grid */
+.genres-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.genre-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.genre-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-3px);
+}
+
+.genre-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.genre-card-header h4 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.genre-count {
+  background: var(--accent-blue);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.genre-bar-container {
+  background: var(--border-color);
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+}
+
+.genre-bar {
+  height: 100%;
+  background: var(--accent-blue);
+  transition: width 0.5s ease;
+}
+
+.genre-card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .estadisticas-container {
     padding: 1rem;
   }
 
-  .estadisticas-header h1 {
+  .header-content h1 {
     font-size: 2rem;
   }
 
-  .stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
+  .stats-cards-grid {
+    grid-template-columns: 1fr;
   }
 
-  .stat-box {
-    padding: 1.5rem;
+  .stats-two-column {
+    grid-template-columns: 1fr;
   }
 
-  .stat-value {
-    font-size: 2rem;
+  .top-juego-card {
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: auto auto;
   }
 
-  .top-juego-item {
-    flex-direction: column;
+  .juego-details {
+    grid-column: 2;
+  }
+
+  .juego-hours-bar {
+    grid-column: 1 / -1;
+  }
+
+  .juego-hours {
+    grid-column: 1 / -1;
     text-align: center;
-    gap: 1rem;
   }
 
-  .top-juego-rank {
-    min-width: auto;
-  }
-
-  .top-juego-info {
-    text-align: center;
+  .featured-stats {
+    gap: 1.5rem;
   }
 }
