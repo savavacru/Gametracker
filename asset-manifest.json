@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/GameTracker/static/css/main.6fd03f71.css",
+    "main.js": "/GameTracker/static/js/main.0a0e0a95.js",
+    "static/js/453.b7a6c3e0.chunk.js": "/GameTracker/static/js/453.b7a6c3e0.chunk.js",
+    "index.html": "/GameTracker/index.html",
+    "main.6fd03f71.css.map": "/GameTracker/static/css/main.6fd03f71.css.map",
+    "main.0a0e0a95.js.map": "/GameTracker/static/js/main.0a0e0a95.js.map",
+    "453.b7a6c3e0.chunk.js.map": "/GameTracker/static/js/453.b7a6c3e0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6fd03f71.css",
+    "static/js/main.0a0e0a95.js"
+  ]
+}
