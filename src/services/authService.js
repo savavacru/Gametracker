@@ -14,7 +14,7 @@ export const registrarUsuario = async (datosUsuario) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(datosUsuario),
-      credentials: "include", // Importante: incluir cookies
+      credentials: "include",
     });
 
     const datos = await respuesta.json();
@@ -43,7 +43,7 @@ export const loginUsuario = async (credenciales) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(credenciales),
-      credentials: "include", // Importante: incluir cookies
+      credentials: "include",
     });
 
     const datos = await respuesta.json();
@@ -67,7 +67,7 @@ export const logoutUsuario = async () => {
   try {
     const respuesta = await fetch(`${API_URL}/logout`, {
       method: "POST",
-      credentials: "include", // Importante: incluir cookies
+      credentials: "include",
     });
 
     const datos = await respuesta.json();
@@ -91,11 +91,11 @@ export const verificarAutenticacion = async () => {
   try {
     const respuesta = await fetch(`${API_URL}/perfil`, {
       method: "GET",
-      credentials: "include", // Importante: incluir cookies
+      credentials: "include",
     });
 
     if (!respuesta.ok) {
-      return null; // No está autenticado
+      return null;
     }
 
     const datos = await respuesta.json();

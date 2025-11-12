@@ -32,11 +32,9 @@ function App() {
   // Cargar juegos cuando el usuario esté autenticado
   useEffect(() => {
     if (usuario) {
-      // Limpiar juegos primero para evitar mostrar datos del usuario anterior
       setJuegos([]);
       cargarJuegos();
     } else {
-      // Limpiar juegos si no hay usuario
       setJuegos([]);
     }
   }, [usuario]); // Se ejecuta cada vez que cambia el usuario
@@ -53,7 +51,7 @@ function App() {
       setJuegos(datos);
     } catch (error) {
       console.error("Error al cargar juegos:", error);
-      setJuegos([]); // En caso de error, asegurar que esté vacío
+      setJuegos([]);
     }
   };
 
@@ -97,19 +95,17 @@ function App() {
   };
 
   const manejarLoginExitoso = (datosUsuario) => {
-    // Limpiar datos del usuario anterior antes de cargar el nuevo
     setJuegos([]);
     setJuegoAEditar(null);
     setUsuario(datosUsuario);
-    setPaginaActual('dashboard'); // Ir al dashboard después del login
+    setPaginaActual('dashboard');
   };
 
   const manejarRegistroExitoso = (datosUsuario) => {
-    // Limpiar datos del usuario anterior antes de cargar el nuevo
     setJuegos([]);
     setJuegoAEditar(null);
     setUsuario(datosUsuario);
-    setPaginaActual('dashboard'); // Ir al dashboard después del registro
+    setPaginaActual('dashboard');
   };
 
   const manejarLogout = async () => {
@@ -118,7 +114,7 @@ function App() {
       setUsuario(null);
       setJuegos([]);
       setJuegoAEditar(null);
-      setPaginaActual('home'); // Volver a Home al cerrar sesión
+      setPaginaActual('home');
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
     }

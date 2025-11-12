@@ -12,7 +12,7 @@ function TarjetaJuego({ juego, onEditar, onEliminar }) {
                     alt={juego.titulo}
                     onError={(e) => e.target.src = imagenPorDefecto}
                 />
-                {juego.estado && <span className="badge-completado">✓ Completado</span>}
+                {juego.estado && <span className="badge-completado">✓ Completado.</span>}
             </div>
             
             <div className="card-contenido">
