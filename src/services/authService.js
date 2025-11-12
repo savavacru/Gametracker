@@ -1,11 +1,5 @@
-// URL base del backend
 const API_URL = `${process.env.REACT_APP_API_URL || "http://localhost:5000/api"}/usuarios`;
 
-/**
- * Registrar un nuevo usuario
- * @param {Object} datosUsuario - Objeto con nombre, email y password
- * @returns {Object} - Datos del usuario registrado
- */
 export const registrarUsuario = async (datosUsuario) => {
   try {
     const respuesta = await fetch(`${API_URL}/register`, {
@@ -30,11 +24,6 @@ export const registrarUsuario = async (datosUsuario) => {
   }
 };
 
-/**
- * Iniciar sesión
- * @param {Object} credenciales - Objeto con email y password
- * @returns {Object} - Datos del usuario autenticado
- */
 export const loginUsuario = async (credenciales) => {
   try {
     const respuesta = await fetch(`${API_URL}/login`, {
@@ -59,10 +48,6 @@ export const loginUsuario = async (credenciales) => {
   }
 };
 
-/**
- * Cerrar sesión
- * @returns {Object} - Mensaje de confirmación
- */
 export const logoutUsuario = async () => {
   try {
     const respuesta = await fetch(`${API_URL}/logout`, {
@@ -83,10 +68,6 @@ export const logoutUsuario = async () => {
   }
 };
 
-/**
- * Verificar si el usuario está autenticado
- * @returns {Object|null} - Datos del usuario si está autenticado, null si no
- */
 export const verificarAutenticacion = async () => {
   try {
     const respuesta = await fetch(`${API_URL}/perfil`, {

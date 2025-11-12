@@ -1,16 +1,11 @@
 const API_URL = `${process.env.REACT_APP_API_URL || "http://localhost:5000/api"}/juegos`;
 
-/**
- * Obtener todos los juegos del usuario autenticado
- * @returns {Array} - Array de juegos
- */
 export const obtenerJuegos = async () => {
     try {
-        // Agregar timestamp para evitar caché
         const url = `${API_URL}?_t=${Date.now()}`;
         const respuesta = await fetch(url, {
-            credentials: "include", // Importante: incluir cookies
-            cache: 'no-cache', // Evitar caché del navegador
+            credentials: "include",
+            cache: 'no-cache',
         });
         
         if (!respuesta.ok) {
@@ -25,11 +20,6 @@ export const obtenerJuegos = async () => {
     }
 };
 
-/**
- * Agregar un nuevo juego
- * @param {Object} nuevoJuego - Datos del juego a agregar
- * @returns {Object} - Juego guardado
- */
 export const agregarJuego = async (nuevoJuego) => {
     try {
         const respuesta = await fetch(API_URL, {
@@ -38,7 +28,7 @@ export const agregarJuego = async (nuevoJuego) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(nuevoJuego),
-            credentials: "include", // Importante: incluir cookies
+            credentials: "include",
         });
         
         if (!respuesta.ok) {
@@ -53,12 +43,6 @@ export const agregarJuego = async (nuevoJuego) => {
     }
 };
 
-/**
- * Editar un juego existente
- * @param {string} id - ID del juego
- * @param {Object} juegoActualizado - Nuevos datos del juego
- * @returns {Object} - Juego actualizado
- */
 export const editarJuego = async (id, juegoActualizado) => {
     try {
         const respuesta = await fetch(`${API_URL}/${id}`, {
@@ -82,10 +66,6 @@ export const editarJuego = async (id, juegoActualizado) => {
     }
 };
 
-/**
- * Eliminar un juego
- * @param {string} id - ID del juego a eliminar
- */
 export const eliminarJuego = async (id) => {
     try {
         const respuesta = await fetch(`${API_URL}/${id}`, {
@@ -105,11 +85,6 @@ export const eliminarJuego = async (id) => {
     }
 };
 
-/**
- * Buscar juegos en RAWG API
- * @param {string} nombre - Nombre del juego a buscar
- * @returns {Array} - Array de juegos encontrados
- */
 export const buscarJuegosRAWG = async (nombre) => {
     try {
         if (!nombre || nombre.trim() === "") {
@@ -129,11 +104,6 @@ export const buscarJuegosRAWG = async (nombre) => {
     }
 };
 
-/**
- * Obtener juegos del catálogo por género/categoría desde RAWG
- * @param {string} categoria - Categoría o género (populares, accion, aventura, estrategia)
- * @returns {Array} - Array de juegos
- */
 export const obtenerJuegosPorCategoria = async (categoria) => {
     try {
         const respuesta = await fetch(`${API_URL}/catalogo/${categoria}`);
