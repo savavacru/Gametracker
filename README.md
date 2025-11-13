@@ -222,7 +222,7 @@ ISC
 
 ## 👨‍💻 Autor
 
-**Iván Ausecha**
+**Saray Vargas**
 - GitHub: [@savavacru](https://github.com/savavacru)
 
 ---
